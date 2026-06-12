@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swarna Mahal | Royal Indian Fine Dining Experience</title>
+  <meta name="description" content="Experience premium royal Indian culinary artistry at Swarna Mahal. Reserve your table, explore our interactive signature menu, and immerse yourself in gold-class hospitality.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* CSS Variables for Premium Obsidian & Gold Theme */
+    :root {
+      --color-bg-primary: #0a0a0a;
+      --color-bg-secondary: #121212;
+      --color-bg-card: #1a1a1a;
+      --color-gold-primary: #D4AF37;
+      --color-gold-hover: #F3E5AB;
+      --color-gold-dark: #aa841c;
+      --color-text-primary: #f5f5f5;
+      --color-text-secondary: #a0a0a0;
+      --color-border: rgba(212, 175, 55, 0.15);
+      --font-display: 'Playfair Display', serif;
+      --font-body: 'Montserrat', sans-serif;
+      --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--color-bg-primary);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* Scrollbar Style */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--color-bg-primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-gold-dark);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-gold-primary);
+    }
+
+    /* Glow Elements */
+    .glow-bg {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(0,0,0,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      transition: var(--transition-smooth);
+    }
+
+    header.scrolled {
+      padding: 10px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      transition: var(--transition-smooth);
+    }
+
+    header.scrolled .nav-container {
+      padding: 12px 0;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--color-gold-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo span {
+      font-size: 1.2rem;
+      letter-spacing: 4px;
+      font-family: var(--font-body);
+      font-weight: 300;
+      color: var(--color-text-primary);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+      padding: 8px 0;
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--color-gold-primary);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link:hover {
+      color: var(--color-gold-primary);
+    }
+
+    .btn-reserve {
+      border: 1px solid var(--color-gold-primary);
+      padding: 10px 24px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-radius: 0;
+      color: var(--color-gold-primary);
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-reserve::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: 0.5s;
+    }
+
+    .btn-reserve:hover::before {
+      left: 100%;
+    }
+
+    .btn-reserve:hover {
+      background: var(--color-gold-primary);
+      color: var(--color-bg-primary);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Mobile Hamburger Menu */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      z-index: 1001;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 28px;
+      height: 2px;
+      background-color: var(--color-text-primary);
+      transition: var(--transition-smooth);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.95)), 
+                  url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      z-index: 10;
+      padding: 0 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: heroFadeIn 1.2s forwards 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--color-gold-primary);
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+
+    .hero-title {
+      font-size: 4.5rem;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+
+    .hero-title span {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 8px;
+      margin-top: 10px;
+      color: var(--color-text-primary);
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 40px;
+      font-weight: 300;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .btn-filled {
+      background: var(--color-gold-primary);
+      color: var(--color-bg-primary);
+      border: 1px solid var(--color-gold-primary);
+      padding: 14px 36px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-filled:hover {
+      background: transparent;
+      color: var(--color-gold-primary);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: transparent;
+      color: var(--color-text-primary);
+      padding: 14px 36px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--color-gold-primary);
+      color: var(--color-gold-primary);
+    }
+
+    /* Scroll Down Indicator */
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .scroll-down i {
+      animation: bounce 2s infinite;
+      color: var(--color-gold-primary);
+    }
+
+    /* Entrance Animation States (Intersection Observer) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section Styling */
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 60px auto;
+    }
+
+    .section-subtitle {
+      color: var(--color-gold-primary);
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      position: relative;
+      padding-bottom: 20px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 1px;
+      background-color: var(--color-gold-primary);
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-img-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .about-img-frame {
+      border: 1px solid var(--color-gold-primary);
+      padding: 15px;
+      position: relative;
+    }
+
+    .about-img {
+      width: 100%;
+      max-width: 450px;
+      height: 550px;
+      object-fit: cover;
+      display: block;
+      transition: var(--transition-smooth);
+    }
+
+    .about-img-frame::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 80px;
+      height: 80px;
+      border-top: 2px solid var(--color-gold-primary);
+      border-left: 2px solid var(--color-gold-primary);
+    }
+
+    .about-img-frame::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 80px;
+      height: 80px;
+      border-bottom: 2px solid var(--color-gold-primary);
+      border-right: 2px solid var(--color-gold-primary);
+    }
+
+    .about-text h3 {
+      font-size: 2.2rem;
+      margin-bottom: 24px;
+      color: var(--color-gold-primary);
+    }
+
+    .about-text p {
+      color: var(--color-text-secondary);
+      margin-bottom: 24px;
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    /* Interactive Menu Section */
+    .menu {
+      background-color: var(--color-bg-secondary);
+    }
+
+    .menu-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 48px;
+    }
+
+    .menu-tabs {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .menu-tab {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 12px 28px;
+      color: var(--color-text-secondary);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .menu-tab:hover,
+    .menu-tab.active {
+      color: var(--color-gold-primary);
+      border-color: var(--color-gold-primary);
+      background: rgba(212, 175, 55, 0.03);
+    }
+
+    .menu-search {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .menu-search input {
+      width: 100%;
+      padding: 12px 20px 12px 48px;
+      background: var(--color-bg-primary);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      border-radius: 0;
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .menu-search input:focus {
+      border-color: var(--color-gold-primary);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+    }
+
+    .menu-search i {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-gold-primary);
+      pointer-events: none;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      min-height: 400px;
+    }
+
+    .menu-item {
+      background: var(--color-bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+
+    .menu-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 0;
+      background-color: var(--color-gold-primary);
+      transition: var(--transition-smooth);
+    }
+
+    .menu-item:hover::before {
+      height: 100%;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border-color: var(--color-border);
+    }
+
+    .menu-item-img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      flex-shrink: 0;
+      transition: var(--transition-smooth);
+    }
+
+    .menu-item:hover .menu-item-img {
+      transform: scale(1.08);
+    }
+
+    .menu-item-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .menu-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .menu-item-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      font-family: var(--font-display);
+    }
+
+    .menu-item-price {
+      color: var(--color-gold-primary);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .menu-item-desc {
+      color: var(--color-text-secondary);
+      font-size: 0.85rem;
+      font-weight: 300;
+      margin-top: 8px;
+    }
+
+    .menu-item-tags {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .menu-tag-badge {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 2px 8px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--color-gold-primary);
+    }
+
+    /* Booking System Section */
+    .booking {
+      position: relative;
+      background: linear-gradient(rgba(10,10,10,0.9), rgba(10,10,10,0.95)), 
+                  url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+      background-attachment: fixed;
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .booking-map-card, 
+    .booking-form-card {
+      background: rgba(26, 26, 26, 0.65);
+      border: 1px solid var(--color-border);
+      backdrop-filter: blur(20px);
+      padding: 40px;
+      position: relative;
+    }
+
+    .card-title {
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+      color: var(--color-gold-primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Seating Layout map */
+    .map-legend {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 30px;
+      font-size: 0.8rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .legend-box {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+
+    .legend-box.available { border: 1px solid var(--color-gold-primary); }
+    .legend-box.selected { background: var(--color-gold-primary); }
+    .legend-box.reserved { background: #333; cursor: not-allowed; }
+
+    .seating-layout {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.05);
+      padding: 30px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .restaurant-stage {
+      width: 80%;
+      height: 12px;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+      border-radius: 4px;
+      text-align: center;
+      font-size: 0.65rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--color-gold-primary);
+      line-height: 0;
+    }
+
+    .seating-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      width: 100%;
+    }
+
+    .table-btn {
+      aspect-ratio: 1;
+      background: transparent;
+      border: 1.5px solid var(--color-gold-primary);
+      color: var(--color-gold-primary);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .table-btn:hover:not(.reserved) {
+      background: rgba(212, 175, 55, 0.1);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+    }
+
+    .table-btn.selected {
+      background: var(--color-gold-primary);
+      color: var(--color-bg-primary);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+
+    .table-btn.reserved {
+      border-color: #333;
+      color: #666;
+      background: rgba(255,255,255,0.02);
+      cursor: not-allowed;
+    }
+
+    .table-btn i {
+      font-size: 1.4rem;
+    }
+
+    .table-badge {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      font-size: 0.55rem;
+      background: rgba(0,0,0,0.4);
+      padding: 1px 4px;
+      color: var(--color-text-primary);
+      border-radius: 2px;
+    }
+
+    .table-btn.selected .table-badge {
+      background: rgba(255,255,255,0.3);
+      color: var(--color-bg-primary);
+    }
+
+    /* Booking Form */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--color-text-secondary);
+    }
+
+    .form-control {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--color-border);
+      padding: 12px 16px;
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .form-control:focus {
+      border-color: var(--color-gold-primary);
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-helper {
+      font-size: 0.75rem;
+      color: var(--color-gold-primary);
+      margin-top: 6px;
+      display: block;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--color-gold-primary);
+      color: var(--color-bg-primary);
+      border: none;
+      padding: 14px 0;
+      font-family: var(--font-body);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      margin-top: 10px;
+    }
+
+    .btn-submit:hover {
+      background: var(--color-gold-hover);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    }
+
+    /* Animated Modal Confirmation */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-gold-primary);
+      padding: 50px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      transform: scale(0.8);
+      opacity: 0;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--color-text-secondary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-close:hover {
+      color: var(--color-gold-primary);
+    }
+
+    .success-icon {
+      font-size: 4rem;
+      color: var(--color-gold-primary);
+      margin-bottom: 24px;
+      animation: checkPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    .modal-title {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+
+    .modal-divider {
+      width: 50px;
+      height: 1px;
+      background-color: var(--color-gold-primary);
+      margin: 16px auto;
+    }
+
+    .modal-info {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+
+    .info-highlight {
+      color: var(--color-text-primary);
+      font-weight: 500;
+    }
+
+    .modal-ticket {
+      background: rgba(0,0,0,0.3);
+      border: 1px dashed var(--color-border);
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+
+    .ticket-id {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      color: var(--color-gold-primary);
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #050505;
+      padding: 60px 0 30px 0;
+      border-top: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 50px;
+      margin-bottom: 50px;
+    }
+
+    .footer-info h4 {
+      font-size: 1.8rem;
+      color: var(--color-gold-primary);
+      margin-bottom: 16px;
+    }
+
+    .footer-info p {
+      color: var(--color-text-secondary);
+      margin-bottom: 24px;
+      font-weight: 300;
+      max-width: 350px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+    }
+
+    .social-link:hover {
+      border-color: var(--color-gold-primary);
+      color: var(--color-gold-primary);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+    }
+
+    .footer-col h5 {
+      font-size: 1.1rem;
+      color: var(--color-text-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-col h5::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 30px;
+      height: 1px;
+      background-color: var(--color-gold-primary);
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-col li {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      font-weight: 300;
+    }
+
+    .footer-col i {
+      color: var(--color-gold-primary);
+      margin-right: 10px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 992px) {
+      .about-grid, 
+      .booking-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .about-img-container {
+        order: 2;
+      }
+
+      .about-text {
+        order: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 4px;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 400px;
+        height: 100vh;
+        background: var(--color-bg-secondary);
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+        transition: var(--transition-smooth);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        border-left: 1px solid var(--color-border);
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+      }
+
+      .seating-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* Keyframes Animations */
+    @keyframes heroFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-8px);
+      }
+      60% {
+        transform: translateY(-4px);
+      }
+    }
+
+    @keyframes checkPop {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      80% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow Effects -->
+  <div class="glow-bg" style="top: 10%; left: -5%;"></div>
+  <div class="glow-bg" style="top: 45%; right: -5%;"></div>
+  <div class="glow-bg" style="top: 80%; left: 10%;"></div>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        Swarna Mahal
+      </a>
+      
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">Our Story</a>
+        <a href="#menu" class="nav-link">Menu</a>
+        <a href="#booking" class="nav-link">Reservations</a>
+        <a href="#booking" class="btn-reserve">Book A Table</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-subtitle">Est. 1954 | New Delhi - Jaipur</p>
+      <h1 class="hero-title">
+        The Art of Fine Gastronomy
+        <span>Culinary Mastery & Gold Class Ambience</span>
+      </h1>
+      <p class="hero-desc">
+        Indulge in a premium sensory journey curated by Michelin-starred Chefs, combining classic Indian heritage with contemporary flavor profiles.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-filled" onclick="scrollToSection('booking')">Book Reservation</button>
+        <button class="btn-outline" onclick="scrollToSection('menu')">Explore Menu</button>
+      </div>
+    </div>
+    <div class="scroll-down">
+      Scroll Down
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="reveal">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-container">
+          <div class="about-img-frame">
+            <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=600&q=80" alt="Executive Chef preparing premium dish" class="about-img">
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="section-subtitle">Our Heritage</span>
+          <h3>A Legacy of Royal Gastronomic Prestige</h3>
+          <p>
+            Founded in Jaipur and matured in the culinary heart of New Delhi, Swarna Mahal offers an unmatched fusion of royal culinary precision and visual luxury. 
+          </p>
+          <p>
+            We believe that dining is a performance. Each plate is a blank canvas where texture, aroma, temperature, and visual arrangement are balanced to create emotional culinary memories.
+          </p>
+          <button class="btn-outline" style="border-radius: 0;" onclick="scrollToSection('about')">Read Our Full Story</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu" class="menu reveal">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Exquisite Taste</span>
+        <h2 class="section-title">The Culinary Canvas</h2>
+      </div>
+
+      <div class="menu-controls">
+        <!-- Tabbed Menu Headers -->
+        <div class="menu-tabs" id="menu-tabs">
+          <button class="menu-tab active" data-category="all">Full Menu</button>
+          <button class="menu-tab" data-category="appetizers">Appetizers</button>
+          <button class="menu-tab" data-category="mains">Main Courses</button>
+          <button class="menu-tab" data-category="desserts">Desserts</button>
+          <button class="menu-tab" data-category="drinks">Signature Drinks</button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="menu-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="search-input" placeholder="Search our signature dishes...">
+        </div>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="menu-grid" id="menu-grid">
+        <!-- Javascript will populate menu items here dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking System Section -->
+  <section id="booking" class="booking reveal">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Reserve An Experience</span>
+        <h2 class="section-title">Exclusive Seating</h2>
+      </div>
+
+      <div class="booking-grid">
+        <!-- Interactive Seating Layout -->
+        <div class="booking-map-card">
+          <h3 class="card-title"><i class="fa-solid fa-chair"></i> Choose Your Seating Table</h3>
+          <div class="map-legend">
+            <div class="legend-item">
+              <span class="legend-box available"></span>
+              Available
+            </div>
+            <div class="legend-item">
+              <span class="legend-box selected"></span>
+              Selected
+            </div>
+            <div class="legend-item">
+              <span class="legend-box reserved"></span>
+              Reserved
+            </div>
+          </div>
+
+          <div class="seating-layout">
+            <div class="restaurant-stage">Exclusive Orchestra Stage</div>
+            
+            <div class="seating-grid" id="seating-grid">
+              <!-- JS will inject tables here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Booking details Form -->
+        <div class="booking-form-card">
+          <h3 class="card-title"><i class="fa-solid fa-calendar-check"></i> Reservation Form</h3>
+          <form id="booking-form" onsubmit="handleBookingSubmit(event)">
+            <div class="form-group">
+              <label class="form-label" for="book-name">Full Name</label>
+              <input type="text" id="book-name" class="form-control" required placeholder="Jacques Pépin">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="book-email">Email Address</label>
+                <input type="email" id="book-email" class="form-control" required placeholder="jacques@etoile.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="book-phone">Phone Number</label>
+                <input type="tel" id="book-phone" class="form-control" required placeholder="+1 (555) 234-5678">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="book-date">Reservation Date</label>
+                <input type="date" id="book-date" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="book-time">Preferred Time Slot</label>
+                <select id="book-time" class="form-control" required>
+                  <option value="" disabled selected>Select Time Slot</option>
+                  <option value="17:00">5:00 PM (Sunset Lounge)</option>
+                  <option value="18:30">6:30 PM (Jazz Soiree)</option>
+                  <option value="20:00">8:00 PM (Premium Prime)</option>
+                  <option value="21:30">9:30 PM (Late Night Jazz)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Selected Table</label>
+              <input type="text" id="book-table-display" class="form-control" readonly placeholder="Please select a table on the map..." style="border-color: var(--color-gold-primary); font-weight: 600;">
+              <span class="form-helper">*Reservation guarantees layout selection for 2 hours.</span>
+            </div>
+
+            <button type="submit" class="btn-submit">Confirm Reservation</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Confirmation Overlay -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+      <i class="fa-regular fa-circle-check success-icon"></i>
+      <h3 class="modal-title">Booking Confirmed</h3>
+      <div class="modal-divider"></div>
+      
+      <div class="modal-ticket">
+        <p style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 4px;">Reservation ID</p>
+        <span class="ticket-id" id="ticket-id">ED-982309</span>
+      </div>
+
+      <p class="modal-info">
+        Dear <span class="info-highlight" id="modal-guest-name">Jacques Pépin</span>, we look forward to welcoming you to Swarna Mahal on <span class="info-highlight" id="modal-guest-date">June 20, 2026</span> at <span class="info-highlight" id="modal-guest-time">8:00 PM</span>.
+        <br><br>
+        Your reservation is locked for <span class="info-highlight" id="modal-guest-table">Table 04 (VIP 6-Seater)</span>. A confirmation details package has been dispatched to your email address.
+      </p>
+
+      <button class="btn-filled" style="width: 100%;" onclick="closeModal()">Perfect, Thank You</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-info">
+          <h4>Swarna Mahal</h4>
+          <p>
+            Experience premium royal Indian fusion fine dining curated under obsidian walls and golden lights. A true masterpiece of culinary arts.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h5>Open Hours</h5>
+          <ul>
+            <li><i class="fa-regular fa-clock"></i> Mon - Thu: 5:00 PM - 11:00 PM</li>
+            <li><i class="fa-regular fa-clock"></i> Fri - Sat: 4:30 PM - 12:00 AM</li>
+            <li><i class="fa-regular fa-clock"></i> Sunday: Closed (Private Bookings)</li>
+            <li><i class="fa-solid fa-map-location-dot"></i> 452 Connaught Place, New Delhi, India</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 16px; font-weight: 300;">
+            Subscribe to receive exclusive invitations to guest chef tasting menu dinners.
+          </p>
+          <div style="display: flex;">
+            <input type="email" placeholder="Email" class="form-control" style="padding: 10px; border-right: none; height: 42px;">
+            <button class="btn-filled" style="padding: 10px 20px; font-size: 0.75rem; height: 42px;">Join</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Swarna Mahal Royal Dining. Designed & Developed by Atharv®. All rights reserved.</p>
+        <p>Design Aesthetics by Antigravity</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Javascript Logic -->
+  <script>
+    // ----------------------------------------------------
+    // SIGNATURE MENU DATABASE
+    // ----------------------------------------------------
+    const menuItems = [
+      // Appetizers
+      {
+        id: 1,
+        title: "Golden Oyster Tartare",
+        category: "appetizers",
+        price: "$34",
+        desc: "Fresh wild-caught Atlantic oysters, golden Ossetra caviar, shallot cream, micro-sorrel garnish.",
+        img: "https://images.unsplash.com/photo-1534080391025-a87b8198f982?auto=format&fit=crop&w=200&q=80",
+        tags: ["Gluten-Free", "Chef Choice"]
+      },
+      {
+        id: 2,
+        title: "Truffle Velouté",
+        category: "appetizers",
+        price: "$28",
+        desc: "Creamy forest mushroom emulsion, infused black Périgord winter truffle oil, crisp parmesan tuile.",
+        img: "https://images.unsplash.com/photo-1547592165-e1d17fed6005?auto=format&fit=crop&w=200&q=80",
+        tags: ["Vegetarian"]
+      },
+      {
+        id: 3,
+        title: "Pan-Seared Foie Gras",
+        category: "appetizers",
+        price: "$39",
+        desc: "Rich fattened duck liver, caramelized mission fig compote, toasted artisanal brioche, balsamic glaze.",
+        img: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=200&q=80",
+        tags: ["Signature"]
+      },
+      // Mains
+      {
+        id: 4,
+        title: "Wagyu Ribeye Signature",
+        category: "mains",
+        price: "$110",
+        desc: "A5 Grade Miyazaki Wagyu, slow butter-basted with rosemary, dark potato purée, gold leaf, red wine jus reduction.",
+        img: "https://images.unsplash.com/photo-1546964124-0cce460f38ef?auto=format&fit=crop&w=200&q=80",
+        tags: ["Premium", "Chef Choice"]
+      },
+      {
+        id: 5,
+        title: "Butter Poached Lobster",
+        category: "mains",
+        price: "$85",
+        desc: "Maine lobster tail slow poached in salted cultured butter, saffron-infused risotto, baby sea asparagus.",
+        img: "https://images.unsplash.com/photo-1559742811-822873691df8?auto=format&fit=crop&w=200&q=80",
+        tags: ["Gluten-Free"]
+      },
+      {
+        id: 6,
+        title: "Crisp Roasted Duck Breast",
+        category: "mains",
+        price: "$64",
+        desc: "Spiced honey glazed Magret duck, sweet potato fondant, blood orange reduction, roasted heirloom carrots.",
+        img: "https://images.unsplash.com/photo-1514516345957-556ca7d90a29?auto=format&fit=crop&w=200&q=80",
+        tags: ["Premium"]
+      },
+      // Desserts
+      {
+        id: 7,
+        title: "Chocolate Gold Sphere",
+        category: "desserts",
+        price: "$24",
+        desc: "72% Valrhona dark chocolate dome melted table-side with warm salted caramel sauce, espresso gelée.",
+        img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=200&q=80",
+        tags: ["Signature", "Visual Show"]
+      },
+      {
+        id: 8,
+        title: "Saffron Crème Brûlée",
+        category: "desserts",
+        price: "$18",
+        desc: "Madagascar vanilla bean custard infused with Iranian saffron threads, crispy amber crust, macerated berries.",
+        img: "https://images.unsplash.com/photo-1516685018646-549198525c1b?auto=format&fit=crop&w=200&q=80",
+        tags: ["Vegetarian", "Gluten-Free"]
+      },
+      // Drinks
+      {
+        id: 9,
+        title: "L'Étoile Elixir",
+        category: "drinks",
+        price: "$26",
+        desc: "Louis Roederer Cristal Champagne, gold-flake infused botanical gin, wild elderflower liqueur, fresh lemon twist.",
+        img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=200&q=80",
+        tags: ["Alcohol", "Signature"]
+      },
+      {
+        id: 10,
+        title: "Smoked Oak Old Fashioned",
+        category: "drinks",
+        price: "$28",
+        desc: "Rare vintage bourbon, angostura bitters, organic maple, cold-smoked with hickory wood chips in glass cloche.",
+        img: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=200&q=80",
+        tags: ["Alcohol", "Visual Show"]
+      }
+    ];
+
+    // ----------------------------------------------------
+    // SEATING MAP TABLES DATA
+    // ----------------------------------------------------
+    const tableData = [
+      { id: "T-01", type: "2-Seater Cozy", size: 2, reserved: false, position: "Stage Front Left" },
+      { id: "T-02", type: "2-Seater Cozy", size: 2, reserved: true, position: "Stage Front Center" },
+      { id: "T-03", type: "2-Seater Cozy", size: 2, reserved: false, position: "Stage Front Right" },
+      { id: "T-04", type: "VIP Booth", size: 6, reserved: false, position: "Lounge Wall Left" },
+      { id: "T-05", type: "4-Seater Family", size: 4, reserved: false, position: "Center Floor Left" },
+      { id: "T-06", type: "4-Seater Family", size: 4, reserved: true, position: "Center Floor Right" },
+      { id: "T-07", type: "VIP Booth", size: 6, reserved: false, position: "Lounge Wall Right" },
+      { id: "T-08", type: "VIP Balcony Suite", size: 8, reserved: false, position: "Elevated Private Deck" },
+    ];
+
+    let selectedTableId = null;
+
+    // Set today's date as min value for calendar date picker
+    document.addEventListener("DOMContentLoaded", () => {
+      const dateInput = document.getElementById("book-date");
+      const today = new Date().toISOString().split("T")[0];
+      dateInput.min = today;
+      dateInput.value = today;
+
+      // Render items
+      renderMenuItems("all");
+      renderSeatingGrid();
+
+      // Set up Tab Filters
+      const tabs = document.querySelectorAll(".menu-tab");
+      tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+          tabs.forEach(t => t.classList.remove("active"));
+          tab.classList.add("active");
+          const category = tab.getAttribute("data-category");
+          renderMenuItems(category, document.getElementById("search-input").value);
+        });
+      });
+
+      // Set up search event
+      const searchInput = document.getElementById("search-input");
+      searchInput.addEventListener("input", (e) => {
+        const activeTab = document.querySelector(".menu-tab.active");
+        const category = activeTab.getAttribute("data-category");
+        renderMenuItems(category, e.target.value);
+      });
+
+      // Header Scroll style change
+      window.addEventListener("scroll", () => {
+        const header = document.getElementById("header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+
+        // Active Link highlighting
+        const scrollPosition = window.scrollY + 150;
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        sections.forEach(section => {
+          const top = section.offsetTop;
+          const height = section.offsetHeight;
+          const id = section.getAttribute("id");
+
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            navLinks.forEach(link => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      });
+
+      // Reveal Animations (Intersection Observer)
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.15
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+      // Mobile Menu Trigger
+      const menuToggle = document.getElementById("menu-toggle");
+      const navMenu = document.getElementById("nav-menu");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
+
+      navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          menuToggle.classList.remove("active");
+          navMenu.classList.remove("active");
+        });
+      });
+    });
+
+    // ----------------------------------------------------
+    // RENDERING FUNCTIONS
+    // ----------------------------------------------------
+    function renderMenuItems(category, query = "") {
+      const grid = document.getElementById("menu-grid");
+      grid.innerHTML = "";
+
+      const filtered = menuItems.filter(item => {
+        const matchesCategory = category === "all" || item.category === category;
+        const matchesSearch = item.title.toLowerCase().includes(query.toLowerCase()) || 
+                              item.desc.toLowerCase().includes(query.toLowerCase());
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--color-text-secondary); padding: 40px;">No exquisite pairings match your query. Try searching for something else.</div>`;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const itemHtml = `
+          <div class="menu-item">
+            <img src="${item.img}" alt="${item.title}" class="menu-item-img">
+            <div class="menu-item-details">
+              <div>
+                <div class="menu-item-header">
+                  <h4 class="menu-item-title">${item.title}</h4>
+                  <span class="menu-item-price">${item.price}</span>
+                </div>
+                <p class="menu-item-desc">${item.desc}</p>
+              </div>
+              <div class="menu-item-tags">
+                ${item.tags.map(tag => `<span class="menu-tag-badge">${tag}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+        grid.insertAdjacentHTML("beforeend", itemHtml);
+      });
+    }
+
+    function renderSeatingGrid() {
+      const grid = document.getElementById("seating-grid");
+      grid.innerHTML = "";
+
+      tableData.forEach(table => {
+        const isReserved = table.reserved;
+        const isSelected = selectedTableId === table.id;
+        const buttonClass = `table-btn ${isReserved ? 'reserved' : ''} ${isSelected ? 'selected' : ''}`;
+        
+        let icon = "fa-solid fa-chair";
+        if (table.size >= 6) icon = "fa-solid fa-couch";
+        if (table.size >= 8) icon = "fa-solid fa-crown";
+
+        const tableHtml = `
+          <button type="button" class="${buttonClass}" onclick="selectTable('${table.id}')" ${isReserved ? 'disabled' : ''}>
+            <span class="table-badge">${table.size} Pax</span>
+            <i class="${icon}"></i>
+            <span>${table.id}</span>
+          </button>
+        `;
+        grid.insertAdjacentHTML("beforeend", tableHtml);
+      });
+    }
+
+    // ----------------------------------------------------
+    // SELECTION & RESERVATION LOGIC
+    // ----------------------------------------------------
+    function selectTable(id) {
+      const table = tableData.find(t => t.id === id);
+      if (table && !table.reserved) {
+        selectedTableId = id;
+        document.getElementById("book-table-display").value = `${table.id} - ${table.type} (${table.position})`;
+        renderSeatingGrid();
+      }
+    }
+
+    function handleBookingSubmit(e) {
+      e.preventDefault();
+
+      if (!selectedTableId) {
+        alert("Please select an available table from the seating layout diagram first.");
+        return;
+      }
+
+      // Collect data
+      const name = document.getElementById("book-name").value;
+      const email = document.getElementById("book-email").value;
+      const phone = document.getElementById("book-phone").value;
+      const date = document.getElementById("book-date").value;
+      const time = document.getElementById("book-time").value;
+      const table = tableData.find(t => t.id === selectedTableId);
+
+      // Generate Ticket ID
+      const randomId = "ED-" + Math.floor(100000 + Math.random() * 900000);
+
+      // Map to modal values
+      document.getElementById("ticket-id").innerText = randomId;
+      document.getElementById("modal-guest-name").innerText = name;
+      document.getElementById("modal-guest-date").innerText = formatDateString(date);
+      document.getElementById("modal-guest-time").innerText = document.getElementById("book-time").options[document.getElementById("book-time").selectedIndex].text;
+      document.getElementById("modal-guest-table").innerText = `${table.id} (${table.type})`;
+
+      // Open Modal
+      document.getElementById("modal-overlay").classList.add("active");
+
+      // Reset Form and reservation state
+      document.getElementById("booking-form").reset();
+      
+      // Lock that table as reserved dynamically in the demo state
+      table.reserved = true;
+      selectedTableId = null;
+      document.getElementById("book-table-display").value = "";
+      renderSeatingGrid();
+    }
+
+    function closeModal() {
+      document.getElementById("modal-overlay").classList.remove("active");
+    }
+
+    function scrollToSection(id) {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function formatDateString(dateStr) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateStr).toLocaleDateString("en-US", options);
+    }
+  </script>
+</body>
+</html>
